@@ -1,0 +1,272 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Colores principales */
+:root {
+  --verde: #3590F3; /* puedes cambiar este por el verde institucional */
+  --amarillo: #EEC643;
+  --negro: #141414;
+  --gris-claro: #EEF0F2;
+  --verde-universidad: #0a8a3c;
+  --blanco: #ffffff;
+}
+
+/* Body */
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: var(--gris-claro);
+  color: var(--negro);
+}
+
+/* Header */
+header {
+  position: relative;
+  z-index: 2;
+  background: transparent;
+  box-shadow: none;
+}
+
+header .logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--blanco);
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+  color: white;
+  font-weight: bold;
+  flex-direction: column;
+  font-size: 12px;
+}
+
+header nav button {
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  color: var(--verde-universidad);
+  font-weight: bold;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+header nav button:hover {
+  background: var(--blanco);
+}
+
+/* Banner Container */
+.banner-container {
+  position: relative;
+  height: 320px;
+  margin-bottom: 20px;
+}
+
+/* Banner */
+.banner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  background: linear-gradient(to right, var(--verde-universidad), #3cb371);
+  z-index: 1;
+}
+
+.banner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.3;
+}
+
+.banner .texto {
+  position: relative;
+  z-index: 2;
+  color: white;
+  padding: 20px 50px;
+  margin-top: 40px;
+}
+
+.banner h1 {
+  font-size: 48px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.banner h1 span {
+  color: #d9fdd3;
+}
+
+.banner p {
+  font-size: 20px;
+}
+
+/* Links de navegación */
+.nav-links {
+  background: #fff;
+  border-bottom: 1px solid #eee;
+  text-align: center;
+  padding: 15px;
+}
+
+.nav-links a {
+  margin: 0 15px;
+  font-weight: bold;
+  color: var(--verde-universidad);
+  text-decoration: none;
+  transition: 0.3s;
+}
+.nav-links a:hover {
+  color: #004d26;
+}
+
+/* Filtros */
+.filtros {
+  background: var(--verde-universidad);
+  padding: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+}
+
+.filtros span {
+  color: white;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.filtros button {
+  background: white;
+  color: var(--verde-universidad);
+  border-radius: 20px;
+  padding: 8px 16px;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.filtros button:hover {
+  background: #f3f3f3;
+}
+
+.filtros input {
+  border: none;
+  padding: 8px 16px;
+  border-radius: 20px;
+  outline: none;
+  flex: 1;
+}
+
+/* Formulario */
+.formulario {
+  max-width: 700px;
+  margin: 50px auto;
+  background: #fff;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,.1);
+}
+
+.formulario h2 {
+  color: var(--verde-universidad);
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.formulario p {
+  text-align: center;
+  color: #666;
+  margin-bottom: 30px;
+}
+
+.formulario label {
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.formulario input,
+.formulario select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  outline: none;
+}
+
+.formulario input:focus,
+.formulario select:focus {
+  border-color: var(--verde-universidad);
+  box-shadow: 0 0 4px var(--verde-universidad);
+}
+
+.formulario button {
+  background: var(--verde-universidad);
+  color: white;
+  padding: 15px;
+  border: none;
+  width: 100%;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.formulario button:hover {
+  background: #006d2c;
+}
+
+/* Ofertas */
+.ofertas {
+  max-width: 1100px;
+  margin: 50px auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
+  gap: 20px;
+}
+
+.oferta {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.1);
+  transition: 0.3s;
+}
+.oferta:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,.2);
+}
+
+.oferta h3 {
+  color: #333;
+}
+
+.oferta button {
+  margin-top: 10px;
+  width: 100%;
+  background: var(--verde-universidad);
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.oferta button:hover {
+  background: #006d2c;
+}
+
+/* Footer */
+footer {
+  background: var(--verde-universidad);
+  color: white;
+  text-align: center;
+  padding: 20px;
+  margin-top: 50px;
+}
