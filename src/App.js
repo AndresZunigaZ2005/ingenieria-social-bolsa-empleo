@@ -8,8 +8,11 @@ export default function App() {
     correo: '',
     carrera: '',
     semestre: '',
-    edad: ''
+    edad: '',
+    aceptaTerminos: false
   });
+
+  const [showModal, setShowModal] = useState(false);
 
   const carreras = [
     'Seleccione una carrera',
@@ -29,18 +32,18 @@ export default function App() {
   // Cambia este link por el que quieras usar en el banner
 
   const handleInputChange = (e) => {
-    const { name, value } = e.target;
+    const { name, value, type, checked } = e.target;
     setFormData(prev => ({
       ...prev,
-      [name]: value
+      [name]: type === 'checkbox' ? checked : value
     }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!formData.nombre || !formData.correo || !formData.carrera || !formData.semestre || !formData.edad) {
-      alert('Por favor completa todos los campos del formulario');
+    if (!formData.nombre || !formData.correo || !formData.carrera || !formData.semestre || !formData.edad || !formData.aceptaTerminos) {
+      alert('Por favor completa todos los campos del formulario y acepta los términos y condiciones');
       return;
     }
 
@@ -62,7 +65,8 @@ export default function App() {
         correo: '',
         carrera: '',
         semestre: '',
-        edad: ''
+        edad: '',
+        aceptaTerminos: false
       });
     } catch (error) {
       console.error('Error:', error);
@@ -184,9 +188,67 @@ export default function App() {
             max="100"
           />
 
+          <div className="checkbox-container">
+            <label className="checkbox-label">
+              <input
+                type="checkbox"
+                name="aceptaTerminos"
+                checked={formData.aceptaTerminos}
+                onChange={handleInputChange}
+              />
+              Acepta los{' '}
+              <span
+                className="terms-link"
+                onClick={() => setShowModal(true)}
+              >
+                términos y condiciones
+              </span>
+              {' '}*
+            </label>
+          </div>
+
           <button type="submit">Enviar formulario</button>
         </form>
       </div>
+
+      {/* Modal de términos y condiciones */}
+      {showModal && (
+        <div className="modal-overlay" onClick={() => setShowModal(false)}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <div className="modal-header">
+              <h2>Términos y Condiciones</h2>
+              <button 
+                className="modal-close"
+                onClick={() => setShowModal(false)}
+              >
+                ×
+              </button>
+            </div>
+            <div className="modal-body">
+              <h3>1. Aceptación de los términos</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              
+              <h3>2. Uso de la información</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              
+              <h3>3. Privacidad de datos</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              
+              <h3>4. Veracidad de la información</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              
+              <h3>5. Responsabilidades</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              
+              <h3>6. Modificaciones</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              
+              <h3>7. Contacto</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Ofertas de empleo */}
       <div className="ofertas">
@@ -202,8 +264,80 @@ export default function App() {
 
       {/* Footer */}
       <footer>
-        <p>Universidad del Quindío - Bolsa de Empleo</p>
-        <p>© 2025 Todos los derechos reservados</p>
+        <div className="footer-content">
+          <div className="footer-section">
+            <div className="university-info">
+              <div className="logo-footer">
+                <img 
+                  src={logoUniquindio} 
+                  alt="Logo Universidad del Quindío" 
+                  className="footer-logo"
+                />
+                <div className="accreditation">
+                  <span>ALTA CALIDAD</span>
+                  <span>RESOLUCIÓN 01026 DEL MEN 2018</span>
+                </div>
+              </div>
+              <p><strong>Vigilada Mineducación</strong></p>
+            </div>
+          </div>
+
+          <div className="footer-section">
+            <div className="contact-info">
+              <h4>Universidad del Quindío</h4>
+              <p>Carrera 15 con calle 12 norte</p>
+              <p>Armenia, Quindío, Colombia</p>
+              <p><strong>Horario de atención:</strong> Lunes a viernes de 8:00a.m a 12:00m 2:00p.m a 6:00p.m.</p>
+              <p><strong>Teléfono:</strong> +57(606)7359300</p>
+              <p><strong>Línea Gratuita Nacional:</strong> 018000963578</p>
+              
+              <div className="services">
+                <p><strong>Centro de Servicios Universitarios CSU</strong></p>
+                <p>contactenos@uniquindio.edu.co</p>
+                <p><strong>Directorio administrativo</strong></p>
+                <p><strong>Formulario electrónico para denuncias</strong></p>
+                <p><strong>Protocolo de protección denunciantes anónimos</strong></p>
+                <p><strong>Línea anticorrupción:</strong> +57(606)7359416</p>
+                <p>corrupcioncero@uniquindio.edu.co</p>
+                <p><strong>PQRSDF</strong> 018000963578 Opción3</p>
+                <p><strong>Notificaciones Judiciales</strong></p>
+                <p>notificaciones@uniquindio.edu.co</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="footer-section">
+            <div className="links-section">
+              <h4>Enlaces de interés</h4>
+              <ul>
+                <li><a href="#">Mapa del sitio</a></li>
+                <li><a href="#">Ayúdanos a mejorar</a></li>
+                <li><a href="#">Políticas de privacidad y condiciones de uso</a></li>
+                <li><a href="#">Política de tratamiento de datos personales</a></li>
+                <li><a href="#">Políticas de derechos de autor</a></li>
+                <li><a href="#">Notificaciones por aviso y judiciales</a></li>
+                <li><a href="#">¿Cómo navegar en nuestro sitio web?</a></li>
+                <li><a href="#">Preguntas Frecuentes</a></li>
+                <li><a href="#">Glosario</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="footer-section">
+            <div className="certifications">
+              <h5>Redes Sociales</h5>
+              <div className="social-media">
+                <div className="social-icons">
+                  <a href="#" aria-label="Instagram">📷</a>
+                  <a href="#" aria-label="Facebook">📘</a>
+                  <a href="#" aria-label="Twitter">🐦</a>
+                  <a href="#" aria-label="YouTube">📺</a>
+                  <a href="#" aria-label="TikTok">🎵</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </footer>
     </div>
   );
