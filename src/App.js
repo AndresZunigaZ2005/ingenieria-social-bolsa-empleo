@@ -16,16 +16,10 @@ export default function App() {
 
   const carreras = [
     'Seleccione una carrera',
-    'Ingeniería de Sistemas',
     'Ingeniería Civil',
-    'Administración de Negocios',
-    'Contaduría Pública',
-    'Derecho',
-    'Medicina',
-    'Enfermería',
-    'Psicología',
-    'Arquitectura',
-    'Diseño Industrial'
+    'Ingeniería Electrónica',
+    'Ingeniería de Sistemas y Computación',
+    'Ingeniería Topográfica y Geomática'
   ];
 
   const bannerImageURL = "https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=1200"; 
@@ -59,7 +53,7 @@ export default function App() {
         body: JSON.stringify(formData)
       });
 
-      alert('¡Formulario enviado exitosamente! Tus datos han sido registrados.');
+      alert('Gracias — Simulación finalizada\n\nHas completado la simulación educativa sobre ingeniería social. Esta actividad fue realizada con fines pedagógicos y con autorización del profesor Alejandro Urrea Ospina. No se almacenaron datos personales identificables. Los datos de interacción serán usados de forma agregada y se eliminarán dados los tiempos establecidos en los términos y condiciones.\n\nSi deseas más información sobre la actividad planteada, puedes escribir un correo al docente encargado en el correo: aurrea@uniquindio.edu.co');
       setFormData({
         nombre: '',
         correo: '',
@@ -225,26 +219,30 @@ export default function App() {
               </button>
             </div>
             <div className="modal-body">
-              <h3>1. Aceptación de los términos</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              <h3>1. Propósito del estudio</h3>
+              <p>Esta actividad forma parte de un ejercicio académico de la Facultad de Ingeniería y del Programa de Ingeniería de Sistemas y Computación en el espacio académico Seminario de Ingeniería con el fin de evaluar la susceptibilidad a técnicas de ingeniería social (spear phishing) y diseñar materiales de sensibilización. La actividad está diseñada y supervisada por el profesor Alejandro Urrea Ospina.</p>
               
-              <h3>2. Uso de la información</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              <h3>2. Finalidad del tratamiento</h3>
+              <p>Los datos recolectados se usarán únicamente con fines académicos: análisis estadístico agregado y diseño de una campaña de concienciación. No se compartirán datos personales fuera del equipo responsable ni se publicarán datos identificables.</p>
               
-              <h3>3. Privacidad de datos</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              <h3>3. Conservación y eliminación</h3>
+              <p>Nos comprometemos a eliminar todos los datos recogidos relativos a esta actividad dentro de máximo 15 días tras la finalización del estudio y del periodo de reporte (recomendada: 30 días). Antes de la eliminación, los datos se mantendrán en un entorno seguro y solo accesible al equipo autorizado.</p>
               
-              <h3>4. Veracidad de la información</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              <h3>4. Derechos del participante</h3>
+              <p>Participación voluntaria: puede abandonar el sitio antes de enviar cualquier respuesta.</p>
               
-              <h3>5. Responsabilidades</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              <h3>5. Riesgos y beneficios</h3>
+              <p>Riesgo mínimo: posible molestia o sorpresa por la simulación. Beneficio: capacitación práctica y mejora de las políticas y formación de la universidad.</p>
               
-              <h3>6. Modificaciones</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              <h3>6. Confidencialidad y seguridad</h3>
+              <p>Los datos serán almacenados en unidades de almacenamiento institucionales protegidos por acceso restringido. Sólo el equipo investigador tendrá acceso. No se usará la información para fines disciplinarios ni comerciales, únicamente como ejercicio académico.</p>
               
               <h3>7. Contacto</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              <p>Para dudas o más información sobre la actividad, contacte a:</p>
+              <p><strong>Profesor responsable:</strong> Alejandro Urrea Ospina - aurrea@uniquindio.edu.co</p>
+              
+              <h3>8. Aceptación</h3>
+              <p>Al marcar la casilla de consentimiento y enviar el formulario, usted declara que ha leído, entendido y acepta participar en esta actividad con fines exclusivamente académicos y que autoriza el tratamiento de los datos descritos en este documento acorde a lo señalado.</p>
             </div>
           </div>
         </div>
