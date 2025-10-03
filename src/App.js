@@ -68,6 +68,57 @@ export default function App() {
     }
   };
 
+  // Agregar esta constante con las ofertas ficticias
+  const ofertas = [
+    {
+      id: 1,
+      titulo: "Ingeniero Civil - Proyecto Vial",
+      empresa: "Constructora del Quindío",
+      ciudad: "Armenia",
+      descripcion: "Se requiere Ingeniero Civil con experiencia en diseño y supervisión de proyectos viales. Conocimientos en AutoCAD y Civil 3D.",
+      salario: "4.000.000 - 5.000.000",
+      tipoContrato: "Término indefinido",
+      imagen: "https://images.unsplash.com/photo-1590644365607-1c5a865d24e4?w=500&q=80"
+    },
+    {
+      id: 2,
+      titulo: "Desarrollador Full Stack",
+      empresa: "TechQuindío Solutions",
+      ciudad: "Armenia",
+      descripcion: "Buscamos Ingeniero de Sistemas con experiencia en desarrollo web, React, Node.js y bases de datos SQL/NoSQL.",
+      salario: "3.500.000 - 4.500.000",
+      tipoContrato: "Término fijo",
+      imagen: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=500&q=80"
+    },
+    {
+      id: 3,
+      titulo: "Ingeniero Electrónico - IoT",
+      empresa: "Smart Coffee Solutions",
+      ciudad: "Armenia",
+      descripcion: "Se necesita Ingeniero Electrónico para desarrollo de soluciones IoT en el sector cafetero. Experiencia en Arduino y sistemas embebidos.",
+      salario: "3.800.000 - 4.800.000",
+      tipoContrato: "Término indefinido",
+      imagen: "https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?w=500&q=80"
+    },
+    {
+      id: 4,
+      titulo: "Topógrafo Senior",
+      empresa: "GeoQuindío",
+      ciudad: "Calarcá",
+      descripcion: "Ingeniero Topográfico con experiencia en levantamientos topográficos y manejo de estación total. Conocimientos en sistemas GIS.",
+      salario: "3.200.000 - 4.000.000",
+      tipoContrato: "Proyecto",
+      imagen: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=500&q=80"
+    }
+  ];
+
+  // Función para scroll al formulario
+  const scrollToForm = () => {
+    document.querySelector('.formulario').scrollIntoView({ 
+      behavior: 'smooth' 
+    });
+  };
+
   return (
     <div>
       {/* Banner como fondo */}
@@ -80,14 +131,15 @@ export default function App() {
         {/* Header superpuesto */}
         <header>
           <div className="max-w-7xl mx-auto flex items-center justify-between p-4">
-            <div className="logo">
-              <img 
-                src={logoUniquindio} 
-                alt="Logo Universidad del Quindío" 
-                style={{ width: "500px" }}
-              />
+            <div className="logo-container">
+              <div className="logo-circle">
+                <img 
+                  src={logoUniquindio} 
+                  alt="Logo Universidad del Quindío" 
+                  className="logo-image"
+                />
+              </div>
             </div>
-
             <nav>
               <button>YO SOY</button>
               <button>MENÚ</button>
@@ -95,20 +147,21 @@ export default function App() {
             </nav>
           </div>
         </header>
+      </div>
 
-        <div className="texto">
-          <h1>BOLSA DE <span>EMPLEO</span></h1>
-          <p>Conoce todas las ofertas que tenemos para ti</p>
-        </div>
+        {/* Título principal */}
+      <div className="main-title">
+        <h1><span className="title-black">BOLSA DE</span> <span className="title-green">EMPLEO</span></h1>
+        <p>Conoce todas las ofertas que tenemos para ti</p>
       </div>
 
       {/* Links */}
       <div className="nav-links">
-        <a href="#">Reglamento</a>
-        <a href="#">Proyecto de viabilidad</a>
-        <a href="#">Resolución 0210</a>
-        <a href="#">Manual de Usuario</a>
-        <a href="#">más »</a>
+        <a href="https://www.uniquindio.edu.co/loader.php?lServicio=Tools2&lTipo=descargas&lFuncion=descargar&idFile=1931">Reglamento</a>
+        <a href="https://www.uniquindio.edu.co/loader.php?lServicio=Tools2&lTipo=descargas&lFuncion=descargar&idFile=1932">Proyecto de viabilidad</a>
+        <a href="https://www.uniquindio.edu.co/loader.php?lServicio=Tools2&lTipo=descargas&lFuncion=descargar&idFile=1956">Resolución 0210</a>
+        <a href="https://www.uniquindio.edu.co/loader.php?lServicio=Tools2&lTipo=descargas&lFuncion=descargar&idFile=3470">Manual de Usuario</a>
+        <a href="https://www.uniquindio.edu.co/loader.php?lServicio=Tools2&lTipo=descargas&lFuncion=descargar&idFile=8914">Portafolio de servicios</a>
       </div>
 
       {/* Filtros */}
@@ -250,12 +303,27 @@ export default function App() {
 
       {/* Ofertas de empleo */}
       <div className="ofertas">
-        {[1, 2, 3, 4, 5, 6].map((item) => (
-          <div key={item} className="oferta">
-            <h3>Oferta de Empleo {item}</h3>
-            <p>Empresa ejemplo • Ciudad</p>
-            <p>Descripción breve de la oferta de trabajo disponible...</p>
-            <button>Ver detalles</button>
+        {ofertas.map((oferta) => (
+          <div key={oferta.id} className="oferta" onClick={scrollToForm}>
+            <div className="logo-placeholder">
+              <img src={oferta.imagen} alt={oferta.empresa} />
+            </div>
+            <div className="oferta-content">
+              <div className="empresa-info">
+                <h3>{oferta.titulo}</h3>
+                <p className="empresa">{oferta.empresa} • {oferta.ciudad}</p>
+              </div>
+              <p className="descripcion">{oferta.descripcion}</p>
+              <div className="oferta-footer">
+                <p className="salario">
+                  <strong>Salario:</strong> ${oferta.salario}
+                </p>
+                <p className="contrato">
+                  <strong>Contrato:</strong> {oferta.tipoContrato}
+                </p>
+              </div>
+              <button onClick={scrollToForm}>Aplicar ahora</button>
+            </div>
           </div>
         ))}
       </div>

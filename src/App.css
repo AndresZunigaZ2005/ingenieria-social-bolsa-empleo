@@ -30,6 +30,13 @@ header {
   box-shadow: none;
 }
 
+header .max-w-7xl {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 40px;
+}
+
 header .logo {
   display: flex;
   align-items: center;
@@ -44,17 +51,79 @@ header .logo {
   font-size: 12px;
 }
 
+/* Header nav */
+header nav {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  height: 100%;
+}
+
 header nav button {
-  background: rgba(255, 255, 255, 0.9);
+  background: var(--blanco);
   border: none;
   color: var(--verde-universidad);
   font-weight: bold;
-  padding: 8px 16px;
+  padding: 10px 20px;
+  border-radius: 20px;
   cursor: pointer;
   transition: 0.3s;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 header nav button:hover {
+  background: var(--verde-universidad);
+  color: var(--blanco);
+}
+
+/* Logo styles */
+.logo-container {
+  position: relative;
+}
+
+.logo-circle {
+  width: 130px;
+  height: 130px;
   background: var(--blanco);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.logo-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Main title styles */
+.main-title {
+  text-align: center;
+  padding: 40px 20px;
+  position: relative;
+  z-index: 2;
+  background-color: var(--blanco);
+  margin-top: -20px;
+}
+
+.main-title h1 {
+  font-size: 48px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.main-title .title-black {
+  color: var(--negro);
+}
+
+.main-title .title-green {
+  color: var(--verde-universidad);
+}
+
+.main-title p {
+  font-size: 20px;
+  color: var(--negro);
 }
 
 /* Banner Container */
@@ -128,29 +197,34 @@ header nav button:hover {
 /* Filtros */
 .filtros {
   background: var(--verde-universidad);
-  padding: 15px;
+  padding: 20px;
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 15px;
   align-items: center;
   justify-content: center;
 }
 
 .filtros span {
-  color: white;
+  color: var(--blanco);
   font-weight: bold;
   margin-right: 10px;
+  border: 2px solid var(--blanco);
+  padding: 8px 16px;
+  border-radius: 20px;
 }
 
 .filtros button {
-  background: white;
+  background: var(--blanco);
   color: var(--verde-universidad);
   border-radius: 20px;
   padding: 8px 16px;
   border: none;
   cursor: pointer;
   transition: 0.3s;
+  font-weight: bold;
 }
+
 .filtros button:hover {
   background: #f3f3f3;
 }
@@ -160,7 +234,8 @@ header nav button:hover {
   padding: 8px 16px;
   border-radius: 20px;
   outline: none;
-  flex: 1;
+  width: 200px; /* Ancho fijo más pequeño */
+  font-size: 14px;
 }
 
 /* Formulario */
@@ -225,41 +300,51 @@ header nav button:hover {
 
 /* Ofertas */
 .ofertas {
-  max-width: 1100px;
+  max-width: 900px;
   margin: 50px auto;
-  display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
+  display: flex;
+  flex-direction: column;
   gap: 20px;
 }
 
 .oferta {
   background: white;
-  padding: 20px;
+  padding: 25px;
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0,0,0,.1);
   transition: 0.3s;
-}
-.oferta:hover {
-  box-shadow: 0 4px 12px rgba(0,0,0,.2);
-}
-
-.oferta h3 {
-  color: #333;
-}
-
-.oferta button {
-  margin-top: 10px;
-  width: 100%;
-  background: var(--verde-universidad);
-  color: white;
-  padding: 10px;
-  border: none;
-  border-radius: 8px;
   cursor: pointer;
-  transition: 0.3s;
+  display: flex;
+  gap: 20px;
 }
-.oferta button:hover {
-  background: #006d2c;
+
+.oferta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0,0,0,.15);
+}
+
+.logo-placeholder {
+  width: 100px;
+  height: 100px;
+  border-radius: 8px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.logo-placeholder img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.oferta-content {
+  flex: 1;
+}
+
+.empresa-info h3 {
+  font-size: 20px;
+  color: var(--negro);
+  margin-bottom: 5px;
 }
 
 /* Footer */
