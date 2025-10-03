@@ -14,6 +14,11 @@ export default function App() {
 
   const [showModal, setShowModal] = useState(false);
 
+  // Estado para menús móviles
+  const [showNavMenu, setShowNavMenu] = useState(false);
+  const [showLinksMenu, setShowLinksMenu] = useState(false);
+  const [showFiltrosMenu, setShowFiltrosMenu] = useState(false);
+
   const carreras = [
     'Seleccione una carrera',
     'Ingeniería Civil',
@@ -140,22 +145,51 @@ export default function App() {
                 />
               </div>
             </div>
-            <nav>
+            {/* Menú hamburguesa para móvil */}
+            <div className="menu-hamburguesa" onClick={() => setShowNavMenu(!showNavMenu)}>
+              <span />
+              <span />
+              <span />
+            </div>
+            <nav className={`nav-desktop ${showNavMenu ? 'open' : ''}`}>
               <button>YO SOY</button>
               <button>MENÚ</button>
               <button>CAMPUS VIRTUAL</button>
             </nav>
           </div>
+          {/* Menú móvil desplegable */}
+          {showNavMenu && (
+            <div className="nav-mobile-menu">
+              <button onClick={() => setShowNavMenu(false)}>YO SOY</button>
+              <button onClick={() => setShowNavMenu(false)}>MENÚ</button>
+              <button onClick={() => setShowNavMenu(false)}>CAMPUS VIRTUAL</button>
+              <button className="close-mobile-menu" onClick={() => setShowNavMenu(false)}>✕</button>
+            </div>
+          )}
         </header>
       </div>
 
-        {/* Título principal */}
+      {/* Título principal */}
       <div className="main-title">
         <h1><span className="title-black">BOLSA DE</span> <span className="title-green">EMPLEO</span></h1>
         <p>Conoce todas las ofertas que tenemos para ti</p>
       </div>
 
-      {/* Links */}
+      {/* Menú desplegable para nav-links en móvil */}
+      <div className="nav-links-responsive">
+        <button className="menu-toggle" onClick={() => setShowLinksMenu(!showLinksMenu)}>
+          Menú de enlaces {showLinksMenu ? '▲' : '▼'}
+        </button>
+        {showLinksMenu && (
+          <div className="nav-links-mobile">
+            <a href="https://www.uniquindio.edu.co/loader.php?lServicio=Tools2&lTipo=descargas&lFuncion=descargar&idFile=1931">Reglamento</a>
+            <a href="https://www.uniquindio.edu.co/loader.php?lServicio=Tools2&lTipo=descargas&lFuncion=descargar&idFile=1932">Proyecto de viabilidad</a>
+            <a href="https://www.uniquindio.edu.co/loader.php?lServicio=Tools2&lTipo=descargas&lFuncion=descargar&idFile=1956">Resolución 0210</a>
+            <a href="https://www.uniquindio.edu.co/loader.php?lServicio=Tools2&lTipo=descargas&lFuncion=descargar&idFile=3470">Manual de Usuario</a>
+            <a href="https://www.uniquindio.edu.co/loader.php?lServicio=Tools2&lTipo=descargas&lFuncion=descargar&idFile=8914">Portafolio de servicios</a>
+          </div>
+        )}
+      </div>
       <div className="nav-links">
         <a href="https://www.uniquindio.edu.co/loader.php?lServicio=Tools2&lTipo=descargas&lFuncion=descargar&idFile=1931">Reglamento</a>
         <a href="https://www.uniquindio.edu.co/loader.php?lServicio=Tools2&lTipo=descargas&lFuncion=descargar&idFile=1932">Proyecto de viabilidad</a>
@@ -164,7 +198,24 @@ export default function App() {
         <a href="https://www.uniquindio.edu.co/loader.php?lServicio=Tools2&lTipo=descargas&lFuncion=descargar&idFile=8914">Portafolio de servicios</a>
       </div>
 
-      {/* Filtros */}
+      {/* Menú desplegable para filtros en móvil */}
+      <div className="filtros-responsive">
+        <button className="menu-toggle" onClick={() => setShowFiltrosMenu(!showFiltrosMenu)}>
+          Filtros {showFiltrosMenu ? '▲' : '▼'}
+        </button>
+        {showFiltrosMenu && (
+          <div className="filtros-mobile">
+            <span>Filtrar por</span>
+            <button>Empresa</button>
+            <button>Ciudad</button>
+            <button>Profesión</button>
+            <button>Fecha publicación</button>
+            <button>Tipo contrato</button>
+            <button>Salario</button>
+            <input type="text" placeholder="Buscar" />
+          </div>
+        )}
+      </div>
       <div className="filtros">
         <span>Filtrar por</span>
         <button>Empresa</button>

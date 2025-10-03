@@ -304,23 +304,21 @@ header nav button:hover {
   margin: 50px auto;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 0; /* Removemos el gap para usar bordes */
 }
 
 .oferta {
   background: white;
-  padding: 25px;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0,0,0,.1);
+  padding: 30px;
   transition: 0.3s;
   cursor: pointer;
   display: flex;
-  gap: 20px;
+  gap: 25px;
+  border-bottom: 1px solid #e0e0e0;
 }
 
-.oferta:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(0,0,0,.15);
+.oferta:last-child {
+  border-bottom: none;
 }
 
 .logo-placeholder {
@@ -342,9 +340,49 @@ header nav button:hover {
 }
 
 .empresa-info h3 {
-  font-size: 20px;
+  font-size: 22px;
   color: var(--negro);
-  margin-bottom: 5px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.empresa {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 15px;
+}
+
+.descripcion {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #444;
+  margin-bottom: 20px;
+}
+
+.oferta-footer {
+  margin-bottom: 20px;
+  font-size: 16px;
+}
+
+.oferta-footer p {
+  margin-bottom: 8px;
+}
+
+.oferta button {
+  background: var(--verde-universidad);
+  color: var(--blanco);
+  padding: 12px 25px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.oferta button:hover {
+  background: #006d2c;
+  transform: translateY(-2px);
 }
 
 /* Footer */
@@ -609,4 +647,134 @@ footer {
   margin-bottom: 15px;
   line-height: 1.6;
   color: #555;
+}
+
+/* Menú hamburguesa */
+.menu-hamburguesa {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  margin-left: 10px;
+}
+.menu-hamburguesa span {
+  display: block;
+  height: 5px;
+  width: 28px;
+  background: var(--verde-universidad);
+  margin: 4px 0;
+  border-radius: 3px;
+  transition: 0.3s;
+}
+
+/* Menú móvil para nav */
+.nav-mobile-menu {
+  position: absolute;
+  top: 70px;
+  right: 20px;
+  background: var(--blanco);
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px 25px 10px 25px;
+  z-index: 100;
+}
+.nav-mobile-menu button {
+  background: var(--verde-universidad);
+  color: var(--blanco);
+  border: none;
+  border-radius: 20px;
+  padding: 10px 18px;
+  font-weight: bold;
+  font-size: 16px;
+  margin-bottom: 5px;
+  cursor: pointer;
+}
+.close-mobile-menu {
+  background: none !important;
+  color: #888 !important;
+  font-size: 22px !important;
+  margin-top: 10px;
+  align-self: flex-end;
+  box-shadow: none !important;
+}
+
+/* Responsive nav-links y filtros */
+.nav-links-responsive, .filtros-responsive {
+  display: none;
+}
+
+.menu-toggle {
+  background: var(--verde-universidad);
+  color: var(--blanco);
+  border: none;
+  border-radius: 20px;
+  padding: 10px 18px;
+  font-weight: bold;
+  font-size: 16px;
+  margin: 15px auto 0 auto;
+  display: block;
+  cursor: pointer;
+}
+
+.nav-links-mobile, .filtros-mobile {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: var(--blanco);
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+  padding: 18px 20px;
+  margin: 10px 0 20px 0;
+}
+
+.filtros-mobile span {
+  color: var(--verde-universidad);
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.filtros-mobile button, .nav-links-mobile a {
+  background: var(--verde-universidad);
+  color: var(--blanco);
+  border-radius: 20px;
+  padding: 8px 16px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  text-align: left;
+  text-decoration: none;
+  font-size: 15px;
+}
+
+.filtros-mobile input {
+  border: 1px solid #ddd;
+  padding: 8px 16px;
+  border-radius: 20px;
+  outline: none;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+/* Mostrar/Ocultar según tamaño de pantalla */
+@media (max-width: 900px) {
+  .nav-desktop {
+    display: none !important;
+  }
+  .menu-hamburguesa {
+    display: flex;
+  }
+  .nav-links {
+    display: none;
+  }
+  .filtros {
+    display: none;
+  }
+  .nav-links-responsive, .filtros-responsive {
+    display: block;
+  }
 }
