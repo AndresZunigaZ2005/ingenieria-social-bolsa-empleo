@@ -13,6 +13,7 @@ export default function App() {
   });
 
   const [showModal, setShowModal] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   // Estado para menús móviles
   const [showNavMenu, setShowNavMenu] = useState(false);
@@ -45,7 +46,7 @@ export default function App() {
       alert('Por favor completa todos los campos del formulario y acepta los términos y condiciones');
       return;
     }
-
+    setLoading(true);
     const scriptURL = 'https://script.google.com/macros/s/AKfycbwzzqbq95O3TakW2tazp7ecmDclkLuO8hyWlzC5m5x88J_RxWqcwmE7zpZ-77xkcHz75Q/exec';
     
     try {
@@ -57,7 +58,7 @@ export default function App() {
         },
         body: JSON.stringify(formData)
       });
-
+      setLoading(false);
       alert('Gracias — Simulación finalizada\n\nHas completado la simulación educativa sobre ingeniería social. Esta actividad fue realizada con fines pedagógicos y con autorización del profesor Alejandro Urrea Ospina. No se almacenaron datos personales identificables. Los datos de interacción serán usados de forma agregada y se eliminarán dados los tiempos establecidos en los términos y condiciones.\n\nSi deseas más información sobre la actividad planteada, puedes escribir un correo al docente encargado en el correo: aurrea@uniquindio.edu.co');
       setFormData({
         nombre: '',
@@ -68,6 +69,7 @@ export default function App() {
         aceptaTerminos: false
       });
     } catch (error) {
+      setLoading(false);
       console.error('Error:', error);
       alert('Hubo un error al enviar el formulario. Por favor intenta nuevamente.');
     }
@@ -126,6 +128,12 @@ export default function App() {
 
   return (
     <div>
+      {/* Loader bloqueante */}
+      {loading && (
+        <div className="loading-overlay">
+          <div className="spinner"></div>
+        </div>
+      )}
       {/* Banner como fondo */}
       <div className="banner-container">
         <div 
@@ -142,6 +150,7 @@ export default function App() {
                   src={logoUniquindio} 
                   alt="Logo Universidad del Quindío" 
                   className="logo-image"
+                  style={{ width: "100%", height: "100%" }}
                 />
               </div>
             </div>
