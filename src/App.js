@@ -85,7 +85,7 @@ export default function App() {
       descripcion: "Se requiere Ingeniero Civil con experiencia en diseño y supervisión de proyectos viales. Conocimientos en AutoCAD y Civil 3D.",
       salario: "4.000.000 - 5.000.000",
       tipoContrato: "Término indefinido",
-      imagen: "https://images.unsplash.com/photo-1590644365607-1c5a865d24e4?w=500&q=80"
+      imagen: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=500&q=80"
     },
     {
       id: 2,
